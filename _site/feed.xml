@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    <title>Like tears in the rain</title>
+    <description>努力这回事，最有意思的地方就在于明明知道它毫无意义，却还是愿意试上一试
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Aug 2016 09:55:10 +0800</pubDate>
-    <lastBuildDate>Tue, 23 Aug 2016 09:55:10 +0800</lastBuildDate>
+    <link>http://wangkunkun.github.com/</link>
+    <atom:link href="http://wangkunkun.github.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 23 Aug 2016 18:50:40 +0800</pubDate>
+    <lastBuildDate>Tue, 23 Aug 2016 18:50:40 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -16,8 +16,8 @@
 
 </description>
         <pubDate>Tue, 23 Aug 2016 09:54:35 +0800</pubDate>
-        <link>http://yourdomain.com/%E6%8A%80%E6%9C%AF/2016/08/23/github.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/%E6%8A%80%E6%9C%AF/2016/08/23/github.html</guid>
+        <link>http://wangkunkun.github.com/%E6%8A%80%E6%9C%AF/2016/08/23/github.html</link>
+        <guid isPermaLink="true">http://wangkunkun.github.com/%E6%8A%80%E6%9C%AF/2016/08/23/github.html</guid>
         
         <category>技术</category>
         
@@ -27,12 +27,12 @@
       </item>
     
       <item>
-        <title>testpost</title>
+        <title>Testurl</title>
         <description>&lt;p&gt;这是一首简单的小情&lt;/p&gt;
 </description>
         <pubDate>Tue, 23 Aug 2016 09:50:28 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/2016/08/23/testurl.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/2016/08/23/testurl.html</guid>
+        <link>http://wangkunkun.github.com/jekyll/2016/08/23/testurl.html</link>
+        <guid isPermaLink="true">http://wangkunkun.github.com/jekyll/2016/08/23/testurl.html</guid>
         
         <category>技术</category>
         
@@ -59,8 +59,8 @@
 
 </description>
         <pubDate>Tue, 23 Aug 2016 09:27:22 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2016/08/23/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2016/08/23/welcome-to-jekyll.html</guid>
+        <link>http://wangkunkun.github.com/jekyll/update/2016/08/23/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://wangkunkun.github.com/jekyll/update/2016/08/23/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
@@ -87,8 +87,8 @@
 
 </description>
         <pubDate>Tue, 23 Aug 2016 09:27:22 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2016/08/23/test.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2016/08/23/test.html</guid>
+        <link>http://wangkunkun.github.com/jekyll/update/2016/08/23/test.html</link>
+        <guid isPermaLink="true">http://wangkunkun.github.com/jekyll/update/2016/08/23/test.html</guid>
         
         
         <category>jekyll</category>
