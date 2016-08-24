@@ -144,69 +144,98 @@ pre {
   .icon > svg path {
     fill: #828282; }
 
+
 /**
  * Site header
  */
 .site-header {
-  border-top: 5px solid #424242;
-  border-bottom: 1px solid #e8e8e8;
-  min-height: 56px;
-  position: relative; }
+/*  border-top: 1px solid #e8e8e8;;
+  border-bottom: 1px solid #e8e8e8;*/
+  /*min-height: 56px;*/
+  height: 340px;
+  position: relative; 
+  overflow:hidden;
+  clear:both;
+}
 
-.site-title {
-  font-size: 26px;
-  font-weight: 300;
-  line-height: 56px;
-  letter-spacing: -1px;
-  margin-bottom: 0;
-  float: left; }
-  .site-title, .site-title:visited {
-    color: #424242; }
+/*王琨的头部*/
+/*info部分开始*/
+.info{/*类选择器*/
+    width:630px;
+    margin:10px auto;
+    overflow:hidden;
+    clear:both;
+    }
+    
+.info figure{
+    width:630px;
+    height:325px;
+    display:block;
+    overflow:hidden;
+    position:relative;
+    margin: 0 auto;
+    /*各个浏览器的兼容*/
+    -webkit-animation:pageTop 6s ease 0.5s backwards;
+    -moz-animation:pageTop 6s ease 0.5s backwards;
+    -o-animation:pageTop 6s ease 0.5s backwards;
+    -ms-animation:pageTop 6s ease 0.5s backwards;
+    animation:pageTop 6s ease 0.5s backwards;
+    float:left;
+    }
+    
+.info figcaption{
+    padding:20px;
+    position:absolute;
 
-.site-nav {
+    top: 15%;
+    left: 20%;
+    background-color:rgba(155,155,155,0.7);
+    color:#FFF;
+    opacity:0;
+    -webkit-transition:ease-out opacity 0.75s;
+    -moz-transition:opacity 0.75s ease-out;
+    -ms-transition:opacity 0.75s ease-out;
+    -o-transition:opacity 0.75s ease-out;
+    }
+.info figure:hover figcaption{
+    opacity:1;
+
+    }
+  /*图片下方的盒子*/
+.info figure .bottomBox{
+  height: 20%;
+
+  margin-bottom: 0px;
+  margin-right: 0px;
+  background-color: rgba(155,155,155,0.7)
+}
+
+.info figure .bottomBox .littleBox{
+  height: 80%;
   float: right;
-  line-height: 56px; }
-  .site-nav .menu-icon {
-    display: none; }
-  .site-nav .page-link {
-    color: #111;
-    line-height: 1.5; }
-    .site-nav .page-link:not(:last-child) {
-      margin-right: 20px; }
-  @media screen and (max-width: 600px) {
-    .site-nav {
-      position: absolute;
-      top: 9px;
-      right: 15px;
-      background-color: #fdfdfd;
-      border: 1px solid #e8e8e8;
-      border-radius: 5px;
-      text-align: right; }
-      .site-nav .menu-icon {
-        display: block;
-        float: right;
-        width: 36px;
-        height: 26px;
-        line-height: 0;
-        padding-top: 10px;
-        text-align: center; }
-        .site-nav .menu-icon > svg {
-          width: 18px;
-          height: 15px; }
-          .site-nav .menu-icon > svg path {
-            fill: #424242; }
-      .site-nav .trigger {
-        clear: both;
-        display: none; }
-      .site-nav:hover .trigger {
-        display: block;
-        padding-bottom: 5px; }
-      .site-nav .page-link {
-        display: block;
-        padding: 5px 10px;
-        margin-left: 20px; }
-        .site-nav .page-link:not(:last-child) {
-          margin-right: 0; } }
+  margin-top: 10%;
+  margin-right: 20px;
+}
+
+
+.headerImg
+{
+    width:630px;
+    height:325px;
+    border-radius: 8px;
+}
+
+
+
+.info WKTitle{
+    font-size: 20px;
+    text-align: center;
+}
+
+.info  figcaption strong{
+    display:block;
+    line-height:20px;
+}
 
 /**
  * Site footer
