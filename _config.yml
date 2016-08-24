@@ -13,7 +13,7 @@ phone: 13056665034
 career: iOS程序猿
 
 description: > # this means to ignore newlines until "baseurl:"
-          努力这回事，最有意思的地方就在于明明知道它毫无意义，却还是愿意试上一试
+          重要的不说你所处的位置，而是你所朝的方向
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://wangkunkun.github.com" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
