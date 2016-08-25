@@ -2,9 +2,9 @@ task :default => :new
 
 require 'fileutils'
 
-desc "创建新的post"
+desc "创建新 post"
 task :new do
-	puts "请输入要创建的post URL："
+  puts "请输入要创建的 post URL："
 	@url = STDIN.gets.chomp
 	puts "请输入 post 标题："
 	@name = STDIN.gets.chomp
@@ -27,7 +27,7 @@ task :new do
 			file.puts "layout: post"
 			file.puts "title: #{@name}"
 			file.puts "subtitle: #{@subtitle}"
-			file.puts "author: Wangkunkun”
+			file.puts "author: wangkun "
 			file.puts "date: #{Time.now}"
 			file.puts "categories: #{@categories}"
 			file.puts "tag: #{@tag}"
