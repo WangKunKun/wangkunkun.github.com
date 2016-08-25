@@ -1,26 +1,43 @@
 
 
 <header class="site-header">
-    <div class="info">
+    <!-- <div class="info"> -->
         <figure>
-            <div style="background:url('http://ocej63sob.bkt.clouddn.com/image/art.png')" class="headerImg">
+            <!-- <div style="background:url('http://ocej63sob.bkt.clouddn.com/image/art.png')" class="headerImg"> -->
+            <div class="headerImg">
             <!-- <img src="http://ocej63sob.bkt.clouddn.com/image/art.png" alt="我们"> -->
-            <figcaption>
-                <WKTitle>乌衣巷</WKTitle>
-                <p>-</p>
-                <p>朱雀桥边野草花，</p>
-                <p>乌衣巷口夕阳斜。</p>
-                <p>旧时王谢前堂燕，</p>
-                <p>飞入寻常百姓家。</p>
-            </figcaption>
-            
-            <div class="bottomBox">
-                <div class="littleBox"><a href="">git</a></div>
-                <div class="littleBox"><a href="">rss</a></div>
+                <figcaption>
+                    <WKTitle>乌衣巷</WKTitle>
+                    <p>-</p>
+                    <p>朱雀桥边野草花，</p>
+                    <p>乌衣巷口夕阳斜。</p>
+                    <p>旧时王谢前堂燕，</p>
+                    <p>飞入寻常百姓家。</p>
+                </figcaption>
+                
+                <div class="bottomBox">
+
+                    <div class="littleBox">
+                        <a href="https://github.com/{{ include.username }}">GitHub</a>
+                    </div>
+                    <div class="littleBox">
+                        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">订阅</a>
+                    </div> 
+                    {% for my_page in site.pages %}
+                      {% if my_page.title %}
+                          <div class="littleBox">
+                          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                    <div class="littleBox">
+                        <a href="{{site.url}}">主页</a>
+                    </div>
+                </div>
 
             </div>
-            
         </figure>
-    </div>
+    <!-- </div> -->
 
 </header>
