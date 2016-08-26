@@ -14,6 +14,7 @@ body {
   font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #fff;
   background-color: #b5caa0;
+  /*background-color: #fff;*/
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -86,7 +87,10 @@ code {
   /*border: 1px solid #e8e8e8;*/
   border-radius: 3px;
   color: #ffffe0;
-  background-color: #91ad70; }
+  /*代码模式 背景色*/
+  background-color: #91ad70; 
+  /*background-color: #ca7853;*/
+  }
 
 code {
   padding: 1px 5px; }
@@ -338,7 +342,10 @@ pre {
 .highlight {
   background: #fff; }
   .highlighter-rouge .highlight {
-    background: #91ad70; }
+    /*代码模块背景色*/
+    background: #91ad70; 
+    /*background: #ca7853;*/
+  }
   .highlight .c {
     color: #998;
     font-style: italic; }
@@ -476,7 +483,10 @@ pre {
     /*自添加*/
 
 blockquote p {
-  color: #305A56
+  /*color: #58b2dc;*/
+  color: #305A56;
+  /*color: #f05e1c;*/
+  /*color: #ca7853;*/
 
 }
 
