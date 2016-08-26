@@ -1,0 +1,100 @@
+#我所了解的category
+**精简于[Dive into Category](http://tech.meituan.com/DiveIntoCategory.html)**
+##一、作用
+
+###	a) 将类的实现分开在几个不同的文件中
+###	b) 声明私有方法
+###	c) 模拟多继承
+###	d) 把framework的私有方法公开
+
+##二、与extension的异处
+
+extension是编译器决议，和类的头文件里的@interface以及实现文件里面的@implement一起形成一个完整的类。你必须用一个类的源码才能为它extension，比如你无法为NSString添加extension。
+
+category是运行期决议的。
+
+所以extension可以添加实例变量，而category作为运行期决议是无法添加实例变量，因为会破坏类的内存布局。
+
+##三、运行时的category
+众所周知，运行时，OC几乎所有的内容都是以结构体的形式存在的。catrgory也不例外。
+
+	typedef struct category_t {
+    const char *name;
+    classref_t cls;
+    struct method_list_t *instanceMethods;
+    struct method_list_t *classMethods;
+    struct protocol_list_t *protocols;
+    struct property_list_t *instanceProperties;
+	} category_t;
+1)、类的名字（name）
+2)、类（cls）
+3)、category中所有给类添加的实例方法的列表（instanceMethods）
+4)、category中所有添加的类方法的列表（classMethods）
+5)、category实现的所有协议的列表（protocols）
+6)、category中添加的所有属性（instanceProperties）
+
+原文从详细介绍了category的方法是如何添加至类的方法列表中。
+而且得出结论如下：
+
+**category并不是绝对的覆盖了类的同名方法，而是catrgory的方法被排在了类的同名方法之前，而方法的检索方式是顺序检索，所以在调用方法时，调用到的同名方法是category的，进而产生了覆盖效果。**
+
+##四、进阶
+
+一个类的两个category，如果存在方法名相同，是根据buildPhases->Compile Sources里面的从上至下顺序编译的，即后编译的会被调用。
+
+在Xcode->Edit Scheme->Run->Arguments->Environment Variables中添加运行时环境变量可打印相应category加载消息。
+
+（更多变量尽在objc-private.h中）
+
+**下列代码是利用运行时遍历方法列表，调用被category覆盖的方法：**
+
+```
+    Class currentClass = [VVStack class];
+    VVStack * my = [VVStack new];
+    if (currentClass) {
+        unsigned int methodCount;
+        //通过类名得到方法列表
+        Method * methodList = class_copyMethodList(currentClass, &methodCount);
+        IMP lastImp = NULL;
+        SEL lastSel = NULL;
+        for (NSInteger i = 0 ; i < methodCount; i ++) {
+            Method method = methodList[i];
+            //得到方法名并转为NSString
+            NSString * methodName = [NSString stringWithCString:sel_getName(method_getName(method)) encoding:NSUTF8StringEncoding];
+            if ([@"printName" isEqualToString:methodName]) {
+                //得到方法对应的函数的指针
+                lastImp = method_getImplementation(method);
+                //得到方法的名字 SEL类型
+                lastSel = method_getName(method);
+            }
+        }
+        
+        typedef void (*functionn) (id, SEL);
+        if (lastImp!= NULL) {
+            functionn f = (functionn)lastImp;
+            //传入类名/实例名 、方法的SEL、对应参数 开始调用方法
+            f(my,lastSel);
+        }
+        //释放方法列表
+        free(methodList);
+    }
+
+```
+**虽说category中无法直接添加属性，但是我们在Category中可以利用运行时添加属性：**
+
+```
+- (void)setName:(NSString *)name
+{
+    objc_setAssociatedObject(self,
+                             "name",
+                             name,
+                             OBJC_ASSOCIATION_COPY);
+}
+
+- (NSString*)name
+{
+    NSString *nameObject = objc_getAssociatedObject(self, "name");
+    return nameObject;
+}
+```
+**如此便可以在类中利用点语法调用name属性。**
