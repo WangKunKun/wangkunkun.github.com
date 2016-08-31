@@ -2,10 +2,46 @@
 <html>
 
   {% include head.html %}
-  <link rel="stylesheet" href="/css/syntax.css">
 
-  <body>
+  <body onload="insertPoem();">
 
+  <script type="text/javascript">
+  //好尴尬 放出去 好像不行
+  function insertPoem(){
+        var arr = [
+        "乌衣巷|朱雀桥边野草花|乌衣巷口夕阳斜|旧时王谢前堂燕|飞入寻常百姓家",
+        "山居秋暝|空山新雨后，天气晚来秋|明月松间照，清泉石上流|竹喧归浣女，莲动下渔舟|随意春芳歇，王孙自可留",
+        "登高|风急天高猿啸哀，渚清沙鸟白飞回|无边落木萧萧下，不尽长江滚滚来|万里悲秋常作客，百年多病独登台|艰难苦恨繁霜鬓，强移栖息一枝安",
+        "题破山寺后禅院|清晨入古寺，初日照高林|竹径通幽处，禅房花木深|山光悦鸟性，潭影空人心|万籁此俱寂，但余钟磐声",
+        "锦瑟|锦瑟无端五十弦，一弦一柱思华年|庄生晓梦迷蝴蝶，望帝春心托杜鹃|沧海月明珠有泪，蓝田日暖玉生烟|此情可待成追忆，只是当时已惘然",
+        "塞上曲|蝉鸣空桑林，八月萧关道|出塞入塞寒，处处黄芦草|从来幽并客，皆共尘沙老|莫学游侠儿，矜夸紫骝好",
+        "芙蓉楼送辛渐|寒雨连江夜入吴|平明送客楚山孤|洛阳亲友如相问|一片冰心在玉壶",
+        "回乡偶书|少小离家老大回|乡音无改鬓毛衰|儿童相见不相识|笑问客从何处来",
+        "杂诗|君自故乡来|应知故乡事|来日倚窗前|寒梅著花未",
+        "相思|红豆生南国|春来发几枝|愿君多采撷|此物最相思",
+        "蜀相|丞相祠堂何处寻，锦官城外柏森森|映阶碧草自春色，隔叶黄鹂空好音|三顾频频天下计，两朝开济老臣心|出师未捷身先死，长使英雄泪满襟",
+        "登幽州台歌|前不见古人|后不见来者|念天地之悠悠|独怆然之泪下",
+        "游子吟|慈母手中线，游子身上衣|临行密密缝，意恐迟迟归|谁言寸草心，报得三春晖"
+        ]
+        let index = Math.floor(Math.random()*arr.length);
+        let poemStr = arr[index];
+        let poemArr = poemStr.split("|");
+        var poemContent = "";
+      for (var i = 0; i < poemArr.length; i++) {
+        if(i == 0) 
+        {
+          poemContent += "<WKTitle>" + poemArr[i] + "</WKTitle>";
+          poemContent += "<p>-</p>";
+        }
+        else
+        {
+            poemContent += "<p>" + poemArr[i] + "</p>";
+        }
+      }
+      let insertLabel = document.getElementById("poem");
+      insertLabel.innerHTML += poemContent;
+  }
+  </script>
     {% include header.html %}
 
     <div class="page-content">
@@ -15,6 +51,8 @@
     </div>
 
     {% include footer.html %}
+
+
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -25,6 +63,10 @@
     ga('send', 'pageview');
 
   </script>
+
+
+
+
   </body>
 
 </html>

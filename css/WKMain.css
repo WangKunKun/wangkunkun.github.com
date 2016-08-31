@@ -482,13 +482,15 @@ pre {
 
     /*自添加*/
 
-/*blockquote p {*/
+blockquote p {
   /*color: #58b2dc;*/
   /*color: #305A56;*/
   /*color: #f05e1c;*/
   /*color: #ca7853;*/
-
-/*}*/
+  /*color: #268785;*/
+  /*color: #00aa90;*/
+  color: #51a8dd;
+}
 
 /*h2 a {
   color: #18b13e;

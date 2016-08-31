@@ -1,3 +1,13 @@
+---
+layout: post
+title: 利用runtime为setter方法添加存储功能
+subtitle: runti
+author: wangkun 
+date: 2016-08-31 19:51:45 +0800
+categories: iOS OC
+tag: oc runtime
+---
+
 ##利用runtime为setter方法添加存储到本地功能
 
 近来换了一家离家很近的公司工作，接手了一个老项目，独立进行二次开发。
@@ -18,29 +28,29 @@
 #####1.重写setter方法，在每一个方法中都存储到本地：
 
 
-
-
-    - (void)setName:(NSString *)name
+{% highlight objc %}
+- (void)setName:(NSString *)name
     {
       _name = name;
       [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
       [[NSUserDefaults standardUserDefaults] synchronize];
-    }
- 
+}
+{% endhighlight %}
        
   > 工作量大，代码冗余度高。
  
         
 #####2.写一个方法对用户数据类进行统一存储到本地操作
-        
-    - (void)savaUserData
+{% highlight objc %}        
+- (void)savaUserData
     {
       [[NSUserDefaults standardUserDefaults] setObject:_name forKey:@"name"];
       [[NSUserDefaults standardUserDefaults] setObject:_password forKey:@"password"];
      ......
      ......
       [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+}
+{% endhighlight %}
 
 >工作量小，但只更改一个属性也需要进行整体存储，效率低。 
 
@@ -57,7 +67,7 @@
         
 
    
->懒，又追求效率，SO选择了方案4！ 果然懒才是程序猿的第一生产力啊。`
+>懒，又追求效率，SO选择了方案4！ 果然懒才是程序猿的第一生产力啊。
 
 ####实践
 
@@ -68,21 +78,21 @@
 
 
   `setter方法的本质是用属性的新值去替换掉旧值。`
-
+{% highlight c %}
    setter方法在C层面是一个带三个参数的函数
-        
+   
    static void new_setter(id self, SEL _cmd, id newValue)
       
           self是实例本身。
           _cmd是方法对应的SEL
           newValue顾名思义。
-      
-  1.1 `通过_cmd获得setter方法的名字——setName：`
-            
-                NSString * setter = NSStringFromSelector(_cmd);
+    {% endhighlight %}
 
+  1.1 `通过_cmd获得setter方法的名字——setName：`
+    {% highlight objc %}
+NSString * setter = NSStringFromSelector(_cmd);{% endhighlight %}
 1.2 `通过setter方法得出成员变量名`
-            
+     {% highlight objc %}       
         if (setter.length <=0 || ![setter hasPrefix:@"set"] || ![setter hasSuffix:@":"]) {
         return nil;
         }
@@ -97,11 +107,11 @@
         //拼接变量名
         NSString * varName = @"_";
         varName = [s stringByAppendingString:getter];
-            
+  {% endhighlight %}          
 
 1.3 `遍历成员变量列表，替换成员变量值`
     
-    
+    {% highlight objc %}
         //得到变量列表
         Ivar * members = class_copyIvarList([self class], &count);
     
@@ -126,16 +136,16 @@
             Ivar member= members[index];
             object_setIvar(self, member, newValue);
         }
-            
+       {% endhighlight %}     
             
    1.4 `存储到本地——任意自由发挥阶段`
-        
+        {% highlight ruby %}
         [[NSUserDefaults standardUserDefaults] setObject:newValue forKey:getterName];
         [[NSUserDefaults standardUserDefaults ]synchronize];
- 
+ 		 {% endhighlight %} 
 
 #####步骤2： 替换setter方法
-
+{% highlight objc %}
     `在方法列表中找到setter方法，用新的setter方法替换之`
     
         unsigned int count = 0;
@@ -155,7 +165,7 @@
         }
         
     }  
-  
+   {% endhighlight %} 
 ####难点
     
     1. setter方法如何通用
