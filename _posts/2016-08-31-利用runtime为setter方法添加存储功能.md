@@ -4,8 +4,8 @@ title: 利用runtime为setter方法添加存储功能
 subtitle: runti
 author: wangkun 
 date: 2016-08-31 19:51:45 +0800
-categories: iOS OC
-tag: oc runtime
+categories: ios oc
+tag: [oc,runtime]
 ---
 
 ##利用runtime为setter方法添加存储到本地功能

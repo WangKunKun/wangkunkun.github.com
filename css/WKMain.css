@@ -302,8 +302,13 @@ pre {
 .post-link {
   display: block;
   font-size: 24px;
-  color: #5dac81 }
+  color: #5dac81; }
 
+.post-wkLink{
+  display: block;
+  font-size: 18px;
+  color: #5dac81;
+}
 /**
  * Posts
  */

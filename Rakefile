@@ -12,8 +12,9 @@ task :new do
 	@subtitle = STDIN.gets.chomp
 	puts "请输入 post 分类，以空格分隔："
 	@categories = STDIN.gets.chomp
-	puts "请输入 post 标签："
+  	puts "请输入 post 标签，以空格分隔："
 	@tag = STDIN.gets.chomp
+
 	@slug = "#{@url}"
 	@slug = @slug.downcase.strip.gsub(' ', '-')
 	@date = Time.now.strftime("%F")
@@ -21,6 +22,15 @@ task :new do
 	if File.exist?(@post_name)
 			abort("文件名已经存在！创建失败")
 	end
+	#处理标签 匹配多标签 a b c 转化为[a,b,c]
+	tags = @tag.downcase.split(' ')#小写后拆分
+	tagStr = "["
+	tags.each{
+		|item| tagStr += item + ','
+	}
+	tagStr.chop!
+	tagStr += "]"
+	
 	FileUtils.touch(@post_name)
 	open(@post_name, 'a') do |file|
 			file.puts "---"
@@ -30,7 +40,7 @@ task :new do
 			file.puts "author: wangkun "
 			file.puts "date: #{Time.now}"
 			file.puts "categories: #{@categories}"
-			file.puts "tag: #{@tag}"
+			file.puts "tag:#{tagStr}"
 			file.puts "---"
 	end
 	exec "vi #{@post_name}"

@@ -1,0 +1,42 @@
+---
+layout: page
+title: 标签云
+permalink: /tag_cloud/
+---
+
+
+<!-- <ul id="tagbox" class="clearfix">
+{% for tag in site.tags %} 
+  <li><a href="{{ BASE_PATH }}/tags.html#{{ tag[0] }}-ref">
+    {{ tag[0] | join: "/" }} <span>{{ tag[1].size }}</span>
+  </a></li>
+{% endfor %}
+</ul> -->
+
+
+
+{% for tag in site.tags %} 
+
+
+<h2 id="{{ tag[0] }}-ref">{{ tag[0] | join: "/" }}</h2>
+
+
+
+
+
+    {% assign pages_list = tag[1] %}  
+    {% for node in pages_list %}
+      {% if node.title != null %}
+        {% if group == null or group == node.group %}
+          {% if page.url == node.url %}
+          <p><a class="post-wkLink" href="{{ BASE_PATH }}{{node.url}}" class="active">{{node.title}}</a></p>
+          {% else %}
+          <p><a class="post-wkLink" href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></p>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  
+
+
+{% endfor %}

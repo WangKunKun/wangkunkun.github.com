@@ -1,0 +1,6 @@
+<div>
+	<h2>标签云：</h2>
+	{% for tag in site.tags %}
+		<a href="{{site.BASE_PATH}}/tags/{{tag[0]}}/" title="{{tag[1].size }} posts" rel="{{tag[1].size}}">{{tag[0]}}</a>
+	{% endfor %}
+</div>
