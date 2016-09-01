@@ -23,8 +23,8 @@ github_username:  WangKunKun
 # Build settings
 markdown: kramdown
 highlighter: rouge
-# paginate: 2 # pagination based on number of posts
-# paginate_path: "page:num"
+paginate: 15 # pagination based on number of posts 分页 每一页多少
+paginate_path: "page:num"
 gems: [jekyll-paginate, jekyll-gist] #增加这一行
 kramdown:
   input: GFM

@@ -487,6 +487,7 @@ pre {
 
     /*自添加*/
 
+/*`` 和 ``` ```的内容底色*/
 blockquote p {
   /*color: #58b2dc;*/
   /*color: #305A56;*/
@@ -507,8 +508,54 @@ blockquote p {
     text-decoration: underline; 
   }
 */
+a{
+  text-decoration: none;
+}
+  a:hover {
+    color: #227d51;
+    text-decoration: underline; 
+  }
+
 /*头部可点击部分*/
 .littleBox .link {
   color: white;
   text-decoration: underline; 
   }
+
+.pagination
+  {
+/*    background-color: #aaa;
+    border-radius: 5px;*/
+    margin:0 auto;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    /*vertical-align: middle;*/
+  }
+
+.pagination .left
+{
+  position: absolute;
+  height: 40px;
+  width: 80px;
+  left: 10px;
+}
+
+.pagination a{
+
+  color: #5dac81;
+}
+.pagination a:hover {
+    color: #227d51;
+    text-decoration: underline; 
+  }
+.pagination .right
+{
+  position: absolute;
+  height: 40px;
+  width: 80px;
+  right: 10px;
+}
+
+

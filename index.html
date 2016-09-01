@@ -6,7 +6,7 @@ layout: default
 
   <!-- <h1 class="page-heading">EssayList</h1> -->
 
-  <ul class="post-list">
+<!--   <ul class="post-list">
     {% for post in site.posts %}
       <li>
         
@@ -17,8 +17,39 @@ layout: default
         
       </li>
     {% endfor %}
-  </ul>
+  </ul> -->
 
-  
+  <!-- 遍历分页后的文章 -->
+<ul class="post-list">
+{% for post in paginator.posts %}
+
+      <li>
+        <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+{% endfor %}
+</ul>
+
+
+{% if paginator.total_pages > 1 %} <!-- 前一页 -->
+<div class="pagination">
+  <div class="left">
+  {% if paginator.previous_page %}
+    <a  class="text" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; 上一页</a>
+  {% else %} <!-- 前一页为nil时 -->
+    <span class="text">&laquo; 上一页</span>
+  {% endif %}
+  </div>
+  <div class="right">
+  {% if paginator.next_page %} <!-- 后一页 -->
+    <a class="text" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">下一页 &raquo;</a>
+  {% else %} <!-- 后一页为nil时 -->
+    <span class="text">下一页 &raquo;</span>
+  {% endif %}
+  </div>
+</div>
+{% endif %}
 
 </div>
