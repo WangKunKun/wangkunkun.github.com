@@ -28,7 +28,7 @@ tag: [oc,runtime]
 #####1.重写setter方法，在每一个方法中都存储到本地：
 
 
-{% highlight objc %}
+{% highlight objc linenos %}
 - (void)setName:(NSString *)name
     {
       _name = name;
@@ -41,7 +41,7 @@ tag: [oc,runtime]
  
         
 #####2.写一个方法对用户数据类进行统一存储到本地操作
-{% highlight objc %}        
+{% highlight objc linenos%}        
 - (void)savaUserData
     {
       [[NSUserDefaults standardUserDefaults] setObject:_name forKey:@"name"];
@@ -78,7 +78,7 @@ tag: [oc,runtime]
 
 
   `setter方法的本质是用属性的新值去替换掉旧值。`
-{% highlight c %}
+{% highlight c linenos%}
    setter方法在C层面是一个带三个参数的函数
    
    static void new_setter(id self, SEL _cmd, id newValue)
@@ -89,10 +89,10 @@ tag: [oc,runtime]
     {% endhighlight %}
 
   1.1 `通过_cmd获得setter方法的名字——setName：`
-    {% highlight objc %}
+    {% highlight objc linenos%}
 NSString * setter = NSStringFromSelector(_cmd);{% endhighlight %}
 1.2 `通过setter方法得出成员变量名`
-     {% highlight objc %}       
+     {% highlight objc linenos%}       
         if (setter.length <=0 || ![setter hasPrefix:@"set"] || ![setter hasSuffix:@":"]) {
         return nil;
         }
@@ -111,7 +111,7 @@ NSString * setter = NSStringFromSelector(_cmd);{% endhighlight %}
 
 1.3 `遍历成员变量列表，替换成员变量值`
     
-    {% highlight objc %}
+    {% highlight objc linenos%}
         //得到变量列表
         Ivar * members = class_copyIvarList([self class], &count);
     
@@ -139,13 +139,13 @@ NSString * setter = NSStringFromSelector(_cmd);{% endhighlight %}
        {% endhighlight %}     
             
    1.4 `存储到本地——任意自由发挥阶段`
-        {% highlight ruby %}
+        {% highlight objc linenos%}
         [[NSUserDefaults standardUserDefaults] setObject:newValue forKey:getterName];
         [[NSUserDefaults standardUserDefaults ]synchronize];
  		 {% endhighlight %} 
 
 #####步骤2： 替换setter方法
-{% highlight objc %}
+{% highlight objc linenos%}
     `在方法列表中找到setter方法，用新的setter方法替换之`
     
         unsigned int count = 0;
