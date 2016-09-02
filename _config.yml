@@ -16,8 +16,8 @@ email: tomorrow.goodman@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
           重要的不说你所处的位置，而是你所朝的方向
 baseurl: "" # the subpath of your site, e.g. /blog
-# url: "http://wangkunkun.github.com" # 远程the base hostname & protocol for your site
-url: "http://localhost:4000/" #本地测试
+url: "http://wangkunkun.github.com" # 远程the base hostname & protocol for your site
+# url: "http://localhost:4000/" #本地测试
 # twitter_username: jekyllrb
 github_username:  WangKunKun
 
